@@ -40,13 +40,13 @@ The included `docker-compose.yml` starts:
 - **`prometheus`** -- scrapes metrics from the collector
 - **`grafana`** -- pre-configured with a Turborepo dashboard (anonymous access enabled)
 
-| Service              | Port  |
-| -------------------- | ----- |
-| OTLP gRPC            | 4317  |
-| Collector metrics    | 8888  |
-| Prometheus exporter  | 8889  |
-| Prometheus UI        | 9090  |
-| Grafana UI           | 3001  |
+| Service             | Port |
+| ------------------- | ---- |
+| OTLP gRPC           | 4317 |
+| Collector metrics   | 8888 |
+| Prometheus exporter | 8889 |
+| Prometheus UI       | 9090 |
+| Grafana UI          | 3001 |
 
 ## How to use
 
@@ -121,13 +121,13 @@ Metric #3
 - [Tasks attempted](http://localhost:9090/graph?g0.expr=turbo_run_tasks_attempted_total&g0.tab=0)
 - [Tasks cached](http://localhost:9090/graph?g0.expr=turbo_run_tasks_cached_total&g0.tab=0)
 - [Tasks failed](http://localhost:9090/graph?g0.expr=turbo_run_tasks_failed_total&g0.tab=0)
-- [Cache hit rate](http://localhost:9090/graph?g0.expr=turbo_run_tasks_cached_total+%2F+clamp_min(turbo_run_tasks_attempted_total%2C+1)&g0.tab=0)
+- [Cache hit rate](<http://localhost:9090/graph?g0.expr=turbo_run_tasks_cached_total+%2F+clamp_min(turbo_run_tasks_attempted_total%2C+1)&g0.tab=0>)
 
 **Grafana dashboard**: Open `http://localhost:3001` -- the **Turborepo Runs** dashboard is pre-configured and loads automatically. No login required. The dashboard includes:
 
 - Run duration (avg and p95) and runs over time
 - Tasks attempted, cached, failed, and cache hit rate
-- **Task breakdown** -- duration by task (build, lint, check-types, etc.), cache status by task, a detail table with package names, and time-series charts for tracking changes across runs
+- **Task breakdown** -- duration by task (build, lint, etc.), cache status by task, a detail table with package names, and time-series charts for tracking changes across runs
 
 ### 5. Cleanup
 

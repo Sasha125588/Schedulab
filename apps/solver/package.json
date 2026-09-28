@@ -1,0 +1,13 @@
+{
+  "name": "solver",
+  "private": true,
+  "scripts": {
+    "dev": "./gradlew bootRun",
+    "build": "./gradlew build",
+    "test": "./gradlew test",
+    "lint": "./gradlew checkstyleMain checkstyleTest",
+    "lint:fix": "./gradlew spotlessApply",
+    "fmt": "./gradlew spotlessApply",
+    "fmt:check": "./gradlew spotlessCheck"
+  }
+}

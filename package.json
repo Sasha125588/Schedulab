@@ -1,29 +1,26 @@
 {
-  "name": "with-otel",
+  "name": "Schedulab",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "lint": "turbo lint",
+    "fmt": "turbo fmt"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
-    "turbo": "^2.11.5",
-    "typescript": "5.9.2"
-  },
-  "engines": {
-    "node": ">=18"
+    "turbo": "^2.11.5"
   },
   "devEngines": {
     "packageManager": {
       "name": "bun",
-      "version": "1.4.0"
+      "version": "1.4.2"
     }
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "engines": {
+    "node": ">=18"
+  }
 }

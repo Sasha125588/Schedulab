@@ -1,0 +1,29 @@
+pre-commit:
+  parallel: true
+
+  commands:
+    lint-staged-js:
+      glob: '*.{ts,js,jsx,tsx,css}'
+      run: bunx oxlint --fix {staged_files} && bunx oxfmt --write {staged_files} && git add {staged_files}
+
+    lint-staged-java:
+      glob:
+        - 'apps/solver/**/*.java'
+        - 'apps/solver/**/*.gradle.kts'
+      run: apps/solver/gradlew -p apps/solver spotlessApply checkstyleMain checkstyleTest
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    auto-emoji-branch:
+      run: |
+        emoji=$(git config user.emoji || echo "🪐")
+        branch=$(git symbolic-ref --short HEAD)
+        message=$(cat "{1}")
+
+        if echo "$message" | (! grep -q "^${branch} ${emoji}*") && \
+           echo "$message" | (! grep -q "^Merge branch*") && \
+           echo "$message" | (! grep -q "^Merge remote-tracking branch*"); \
+        then
+           echo "$branch $emoji $message" > "{1}"
+        fi
